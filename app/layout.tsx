@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://tools.digitalivez.com'),
   title: { default: 'Digitalivez Tools | Free Business Calculators & Online Tools', template: '%s | Digitalivez Tools' },
   description: 'Free, practical business calculators and online tools for freelancers, small businesses, and independent professionals. Smarter tools. Better business decisions.',
+  alternates: { canonical: '/' },
+  openGraph: { title: 'Digitalivez Tools | Free Business Calculators & Online Tools', description: 'Free, practical business tools for clearer everyday decisions.', url: 'https://tools.digitalivez.com/', siteName: 'Digitalivez Tools', type: 'website' },
+  twitter: { card: 'summary', title: 'Digitalivez Tools | Free Business Calculators & Online Tools', description: 'Free, practical business tools for clearer everyday decisions.' },
   applicationName: 'Digitalivez Tools',
   generator: 'Next.js',
   icons: {
@@ -28,11 +31,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'light',
+  themeColor: '#f5f8f6',
 }
 
 export default function RootLayout({
@@ -43,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': [{ '@type': 'Organization', '@id': 'https://tools.digitalivez.com/#organization', name: 'Digitalivez Tools', url: 'https://tools.digitalivez.com/' }, { '@type': 'WebSite', '@id': 'https://tools.digitalivez.com/#website', name: 'Digitalivez Tools', url: 'https://tools.digitalivez.com/', publisher: { '@id': 'https://tools.digitalivez.com/#organization' }, inLanguage: 'en' }] }).replace(/</g, '\\u003c') }} />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
